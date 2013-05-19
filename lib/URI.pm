@@ -135,6 +135,8 @@ method new(Str $uri_pos1?, Str :$uri, :$is_validating) {
 }
 
 method scheme {
+    die "URI is missing a scheme" 
+        unless defined $!scheme;
     return ~$!scheme.lc;
 }
 
