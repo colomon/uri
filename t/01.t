@@ -1,6 +1,6 @@
 use v6;
 use Test;
-plan 47;
+plan 48;
 
 use URI;
 ok(1,'We use URI and we are still alive');
@@ -105,4 +105,9 @@ try {
     }
 }
 is($url_2_valid, 0, 'validating parser rejected bad URI');
+
+# die if accessing schema on an url without one
+try { URI.new('example.org').scheme };
+is $!, "URI is missing a scheme", "error on scheme missing";
+
 # vim:ft=perl6
